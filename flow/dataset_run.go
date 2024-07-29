@@ -47,6 +47,13 @@ func (d *Dataset) Run() {
 	d.context.Run()
 }
 
+func (d *Dataset) RunAndCleanUp() {
+	d.context.Run()
+	d.context.Steps = nil
+	d.context.Datasets = nil
+	d.context = nil
+}
+
 func (d *Dataset) connectExternalInputChansToRead(wg *sync.WaitGroup) {
 	for _, ch := range d.ExternalInputChans {
 		wg.Add(1)

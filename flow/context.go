@@ -22,6 +22,10 @@ func New() (fc *FlowContext) {
 	return
 }
 
+func NewWithoutContext() (fc *FlowContext) {
+	return &FlowContext{Id: 0}
+}
+
 func (fc *FlowContext) newNextDataset(shardSize int, dType reflect.Type) (ret *Dataset) {
 	ret = NewDataset(fc, dType)
 	if dType != nil {
